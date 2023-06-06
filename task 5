@@ -1,0 +1,155 @@
+//Question 1
+//Create a function that will be able to convert figures from Fahrenheit to Celsius.
+function farToCel(fahrenheit) {
+  let celsius = (fahrenheit - 32) * (5 / 9);
+  return celsius;
+}
+
+//Test case
+//Inputting fahrenheit value of 200
+console.log(farToCel(200));    
+
+
+//Question 2
+//Create a function that will calculate the average of numbers in an array.
+function findAvg(numbersArray) {
+  let sum = 0;
+  for(let i = 0; i < numbersArray.length; i++) {
+    sum += numbersArray[i];
+  }
+  let average = sum / numbersArray.length;
+  return average;
+}
+
+//Test case
+//Inputting an array of numbers [2, 4, 6, 8]
+console.log(findAvg([2, 4, 6, 8])); 
+
+
+//Question 3
+//Create a function that checks if a number, n is divisible by two numbers x and y. All inputs are positive, non-zero digits.
+function checkDivisible(n, x, y) {
+  let divisibleByX = n % x === 0;
+  let divisibleByY = n % y === 0;
+  if (divisibleByX && divisibleByY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+//Test case
+//Checking if 15 is divisible by 3 and 5
+console.log(checkDivisible(15,3,5)); 
+
+
+
+//Question 4
+//Create a function that will output the first 100 prime numbers.
+function findPrimeNumbers() {
+  let primeArray = [];
+  let number = 2;
+  while(primeArray.length < 100) {
+    let isPrime = true;
+    for(let i = 2; i <= Math.sqrt(number); i++) {
+      if(number % i === 0) {
+        isPrime = false;
+        break;
+      }
+    }
+    if(isPrime) {
+      primeArray.push(number);
+    }
+    number++;
+  }
+  return primeArray;
+}
+
+//Test case
+console.log(findPrimeNumbers()); 
+
+
+
+//Question 5
+//Create a function that will return a boolean specifying if a number is a prime number.
+function checkPrimeNumber(number) {
+  if(number < 2) {
+    return false;
+  }
+  for(let i = 2; i <= Math.sqrt(number); i++) {
+    if(number % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+//Test case
+//Checking if 17 is a prime number
+console.log(checkPrimeNumber(17)); 
+
+
+
+//Question 6
+//Create a function that receives an array of numbers of diverse numbers and returns an array containing only positive numbers.
+function findPositiveNumbers(numbersArray) {
+  let positiveNumbersArray = [];
+  for(let i = 0; i < numbersArray.length; i++) {
+    if(numbersArray[i] > 0) {
+      positiveNumbersArray.push(numbersArray[i]);
+    }
+  }
+  return positiveNumbersArray;
+}
+
+//Test case
+//Inputting an array of mixed numbers [-2, 4, 0, -8, 10]
+console.log(findPositiveNumbers([-2, 4, 0, -8, 10])); 
+
+
+//Question 7
+//Write a program that prints the numbers from 1 to 100. But for multiples of 3 prints "Fizz" instead of the number and for the multiples of 5 prints "Buzz". For numbers which are multiples of both 3 and 5 prints "FizzBuzz".
+function fizzBuzz() {
+  for(let i = 1; i <= 100; i++) {
+    if(i % 3 === 0 && i % 5 === 0) {
+      console.log("FizzBuzz");
+    } else if(i % 3 === 0) {
+      console.log("Fizz");
+    } else if(i % 5 === 0) {
+      console.log("Buzz");
+    } else {
+      console.log(i);
+    }
+  }
+}
+
+//Test case
+//Executing the function should output a series of numbers 1-100, with Fizz for multiples of 3, Buzz for multiples of 5 and FizzBuzz for multiples of 3 and 5.
+
+
+//Question 8
+//The marketing team is spending way too much time typing in hashtags. Let’s create a hashtag generator for them, our hashtag generator will meet the following criteria; 
+//It must start with a hash symbol, #.
+//Ignore all spaces in the input.
+//All words must have their first letter capitalized.
+//If the final result is going to be longer than 140 characters, it should return false.
+//If the input or result is an empty string, it should return false.
+function generateHashtag(str) {
+  if(str === "") {
+    return false;
+  }
+  let wordsArray = str.split(" ");
+  for(let i = 0; i < wordsArray.length; i++) {
+    wordsArray[i] = wordsArray[i].charAt(0).toUpperCase() + wordsArray[i].slice(1);
+  }
+  let hashtag = "#" + wordsArray.join("");
+  if(hashtag.length > 140) {
+    return false;
+  } else {
+    return hashtag;
+  }
+}
+
+//Test case
+//Inputting the string "generate more hashtags please"
+console.log(generateHashtag("generate more hashtags please"));
